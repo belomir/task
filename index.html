@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- © rsa'19@nsk -->
+<html lang='ru'>
+<head>
+   <meta charset='utf-8'>
+   <meta name='viewport' content='width=device-width, initial-scale=1'>
+   <title>анимация сортировки пузырьком</title>
+   <link rel='stylesheet' href='./style.css'>
+</head>
+<body>
+   <div id='supportError'>Данный браузер не поддерживается</div>
+   <header>
+      <h3>
+         Анимация сортировки пузырьком
+      </h3>
+      <div>
+         <ul type='none'>
+            <li>
+               <svg class='texticon'><use xlink:href='./icons.svg#replay'></use></svg> создать новый случайный набор данных
+            </li>
+            <li>
+               <svg class='texticon'><use xlink:href='./icons.svg#play'></use></svg> непрерывная анимация сортировки
+            </li>
+            <li>
+               <svg class='texticon'><use xlink:href='./icons.svg#pause'></use></svg> останавить анимацию сортировки
+            </li>
+            <li>
+               <svg class='texticon'><use xlink:href='./icons.svg#next'></use></svg> анимировать один шаг сортировки
+            </li>
+         </ul>
+         <ul type='none'>
+            <li>
+               <span class='current'>1</span> текущий элемент
+            </li>
+            <li>
+               <span class='placed'>1</span> элемент на своём месте
+            </li>
+            <li>
+               <span class='pair'>1 2</span> текущая пара элементов
+            </li>
+            <li>
+               <span class='ordered'>1 2</span> элементы упорядочены
+            </li>
+            <li>
+               <span class='unordered'>1 2</span> элементы не упорядочены
+            </li>
+         </ul>
+      </div>
+   </header>
+   <nav>
+      <button id='new' title='новый набор'>
+         <svg class='icon'><use xlink:href='./icons.svg#replay'></use></svg>
+      </button>
+      <button id='play' title='играть/остановить'>
+         <svg class='icon'><use xlink:href='./icons.svg#play'></use></svg>
+         <svg class='icon hidden'><use xlink:href='./icons.svg#pause'></use></svg>
+      </button>
+      <button id='step' title='шаг'>
+         <svg class='icon'><use xlink:href='./icons.svg#next'></use></svg>
+      </button>
+   </nav>
+   <main>
+      <div id='current' class='cell hidden'></div>
+      <div id='caret' class='cell hidden'></div>
+   </main>
+   <footer>
+      <p>
+         &copy; rsa'19@nsk
+      </p>
+   </footer>
+   <script src='./script.js'></script>
+</body>
+</html>

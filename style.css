@@ -1,0 +1,234 @@
+/* © rsa'19@nsk */
+
+
+/* <> */
+
+body {
+   margin: 0;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+body > * {
+   padding: 0.5em 1em;
+}
+
+body > header {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+body > header > div {
+   display: flex;
+   flex-flow: row wrap;
+}
+
+nav {
+   display: flex;
+   justify-content: center;
+}
+nav > button {
+   height: 3em;
+   width: 6em;
+   margin: 1em;
+}
+nav > button[disabled] {
+   fill: gray;
+}
+
+main {
+   padding: 2em;
+   font-family: monospace;
+   font-weight: bold;
+   flex: 1;
+   position: relative;
+   font-size: xx-large;
+   justify-content: center;
+   align-content: center;
+   display: grid;
+}
+
+svg.hidden {
+   display: none;
+}
+
+
+/* # */
+
+#current {
+   outline: 2px solid black;
+   z-index: 50;
+   transition: opacity 1s, transform 0s; /* основной фокус для анимации в нужный момент */
+}
+#current.move {
+   transition: opacity 1s, transform 1s;
+}
+#current.hidden {
+   transition: opacity 1s, transform 0s;
+}
+
+#caret {
+   width: auto;
+   height: auto;
+   z-index: -1;
+   transition: opacity 1s, background 1s, transform 0s;
+   background: #999;
+}
+#caret.unordered {
+   transition: opacity 1s, background 1s, transform 0s;
+   background: #f99;
+}
+#caret.ordered {
+   transition: opacity 1s, background 1s, transform 0s;
+   background: #9f9;
+}
+#caret.move {
+   transition: opacity 1s, background 1s, transform 1s;
+}
+
+#supportError {
+   position: fixed;
+   z-index: 55;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(255,255,255,.85);
+   text-align: center;
+   font-weight: bold;
+   font-size: xx-large;
+   color: red;
+}
+
+
+/* . */
+
+.move {
+   transition: all 1s;
+}
+
+.icon {
+   height: 100%;
+   width: 100%;
+}
+
+.texticon {
+   height: 1.5em;
+   width: 1.5em;
+   vertical-align: middle;
+}
+
+.cell {
+   z-index: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 2em;
+   height: 2em;
+   position: relative;
+   transition: color 1s, transform 0s;
+}
+.cell > * {
+   pointer-events: none;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   -o-user-select: none;
+   user-select: none;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 2em;
+   height: 2em;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: all 0s;
+}
+.cell.placed {
+   color: gray;
+}
+.cell.pair {
+   grid-row-end: span 2;
+   grid-column-end: span 2;
+}
+
+.cell.pair ~ .cell.pair > * {
+   top: auto;
+   left: auto;
+   right: 0;
+   bottom: 0;
+}
+.cell.swap {
+   transition: color 1s, transform 1s;
+   transform: rotate(180deg);
+}
+.cell.swap > * {
+   transition: all 1s;
+   transform: rotate(-180deg);
+}
+
+
+span.current,
+span.placed,
+span.pair,
+span.ordered,
+span.unordered {
+   font-family: monospace;
+   font-weight: bold;
+   padding: .25em .5em;
+   display: inline-block;
+}
+span.current {
+   border: 1px solid black;
+}
+span.placed {
+   color: gray;
+}
+span.pair {
+   background: lightgray;
+}
+span.ordered {
+   background: #9f9;
+}
+span.unordered {
+   background: #f99;
+}
+
+
+.hidden {
+   opacity: 0;
+}
+
+
+/* @ */
+
+@media (max-width: 35rem) {
+   #current.move {
+      transform: translateY(100%);
+   }
+
+   #caret.move {
+      transform: translateY(-50%);
+   }
+
+   #caret,
+   .cell.pair {
+      height: 4em;
+   }
+}
+
+@media (min-width: 35rem) {
+   #current.move {
+      transform: translateX(100%);
+   }
+
+   #caret.move {
+      transform: translateX(-50%);
+   }
+
+   #caret,
+   .cell.pair {
+      width: 4em;
+   }
+}
