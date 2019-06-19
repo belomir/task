@@ -48,6 +48,11 @@ main {
    display: grid;
 }
 
+body > footer {
+   font-size: small;
+   color: gray;
+}
+
 svg.hidden {
    display: none;
 }

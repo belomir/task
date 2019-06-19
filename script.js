@@ -139,6 +139,8 @@ class Demo {
       this.caret.style.gridColumnEnd = 
       this.caret.style.gridRowEnd = 'span 2';
       this.caret.classList.add('hidden');
+      this.playButton.disabled = false;
+      this.stepButton.disabled = false;
 
       this.values = this.values.map(e=>this.randomNumber());
       /* список DOM элементов по порядку … */
@@ -267,6 +269,8 @@ class Demo {
          this.current.classList.add('hidden');
          if(this.play)
             this.playButton.click();
+        this.playButton.disabled = true;
+      	this.stepButton.disabled = true;
       }
    }
    
